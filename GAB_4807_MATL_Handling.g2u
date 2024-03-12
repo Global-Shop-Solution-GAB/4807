@@ -1,0 +1,1870 @@
+Program.Sub.ScreenSU.Start
+Gui.f_MDisp..create
+Gui.f_MDisp..caption("Material Handling Dispatch")
+Gui.f_MDisp..size(15360,10695)
+Gui.f_MDisp..minx(0)
+Gui.f_MDisp..miny(0)
+Gui.f_MDisp..position(0,0)
+Gui.f_MDisp..event(UnLoad,f_MDisp_Unload)
+Gui.f_MDisp..forecolor(0)
+Gui.f_MDisp..BackColor(-2147483633)
+Gui.f_MDisp..mousepointer(0)
+Gui.f_MDisp.gsfgDispatch.create(gsflexgrid)
+Gui.f_MDisp.gsfgDispatch.size(14715,8790)
+Gui.f_MDisp.gsfgDispatch.position(195,1140)
+Gui.f_MDisp.gsfgDispatch.event(MouseUp,fgDisp_MouseUp)
+Gui.f_MDisp.gsfgDispatch.event(CommandClick,gsfgDispatch_CommandClick)
+Gui.f_MDisp.cmdClose.create(button)
+Gui.f_MDisp.cmdClose.caption("Exit")
+Gui.f_MDisp.cmdClose.size(1080,495)
+Gui.f_MDisp.cmdClose.position(13815,120)
+Gui.f_MDisp.cmdClose.event(Click,f_MDisp_Unload)
+Gui.f_MDisp.cmdClose.defaultvalue("")
+Gui.f_MDisp.cmdClose.BackColor(12632256)
+Gui.f_MDisp.tmrRefresh.create(timer)
+Gui.f_MDisp.tmrRefresh.position(200,200)
+Gui.f_MDisp.tmrRefresh.Event(Timer,Dispatch)
+Gui.f_MDisp.tmrRefresh.Size(500,500)
+Gui.f_MDisp.MatlPickTicket.create(button)
+Gui.f_MDisp.MatlPickTicket.caption("Pick Ticket")
+Gui.f_MDisp.MatlPickTicket.size(1080,495)
+Gui.f_MDisp.MatlPickTicket.position(1575,285)
+Gui.f_MDisp.MatlPickTicket.event(Click,MatlPick_Click)
+Gui.f_MDisp.MatlPickTicket.defaultvalue("")
+Gui.f_MDisp.MatlPickTicket.BackColor(8438015)
+Gui.f_MDisp.MatlReq.Create(Button)
+Gui.f_MDisp.MatlReq.Size(1350,495)
+Gui.f_MDisp.MatlReq.Position(195,285)
+Gui.f_MDisp.MatlReq.Caption("Material Req")
+Gui.f_MDisp.MatlReq.Event(Click,Matlreq_Click)
+Gui.f_MDisp.MatlReq.BackColor(8454016)
+Gui.f_MDisp.Refresh.Create(Button)
+Gui.f_MDisp.Refresh.Size(1080,465)
+Gui.f_MDisp.Refresh.Position(13815,645)
+Gui.f_MDisp.Refresh.Caption("Refresh")
+Gui.f_MDisp.Refresh.Event(Click,Dispatch)
+Gui.f_MDisp.Refresh.BackColor(12648447)
+Gui.f_MDisp.picGSSLogo.Create(PictureBox)
+Gui.f_MDisp.picGSSLogo.Size(4125,960)
+Gui.f_MDisp.picGSSLogo.Position(5145,45)
+Gui.f_MDisp.txt1.Create(TextBox,"",True,165,300,0,11115,765,True,0,"Arial",8,32768,1)
+Gui.f_MDisp.txt1.ForeColor(0)
+Gui.f_MDisp.lbl1.Create(Label,"Picking in Progress",True,1935,255,0,11505,855,True,0,"Arial",8,-2147483633,0)
+Gui.f_MDisp.lbl1.DefaultValue("")
+Gui.f_MDisp.lblWO.Create(Label,"**select WO**",True,1935,255,0,1200,945,True,0,"Arial",8,-2147483633,0)
+Gui.f_MDisp.lblWO.ForeColor(255)
+Gui.f_BinList..create
+Gui.f_BinList..caption("Title")
+Gui.f_BinList..size(11520,3285)
+Gui.f_BinList..minx(0)
+Gui.f_BinList..miny(0)
+Gui.f_BinList..position(0,0)
+Gui.f_BinList..event(UnLoad,BinListExit)
+Gui.f_BinList..alwaysontop(True)
+Gui.f_BinList..forecolor(0)
+Gui.f_BinList..fontstyle(False,False,False,False)
+Gui.f_BinList..BackColor(-2147483633)
+Gui.f_BinList..maxbutton(False)
+Gui.f_BinList..minbutton(False)
+Gui.f_BinList..mousepointer(0)
+Gui.f_BinList..sizeable(False)
+Gui.f_BinList.gsfgBinList.create(gsflexgrid)
+Gui.f_BinList.gsfgBinList.size(10905,2265)
+Gui.f_BinList.gsfgBinList.position(200,200)
+Gui.f_matlreq..Create
+Gui.f_matlreq..Caption("Material Request ")
+Gui.f_matlreq..Size(5370,1845)
+Gui.f_matlreq..MinX(0)
+Gui.f_matlreq..MinY(0)
+Gui.f_matlreq..Position(0,0)
+Gui.f_matlreq..BackColor(-2147483633)
+Gui.f_matlreq..MousePointer(0)
+Gui.f_matlreq..Event(UnLoad,f_MatlReq_Unload2)
+Gui.f_matlreq..AlwaysOnTop(True)
+Gui.f_matlreq.txt1.Create(TextBox,"",True,3825,300,0,705,405,True,0,"Arial",8,-2147483646,1)
+Gui.f_matlreq.txt1.Event(KeyPressEnter,Matlreq_Enter)
+Gui.f_matlreq.txt1.DefaultValue("")
+Gui.f_matlreq.txt1.ForeColor(-2147483639)
+Gui.f_matlreq.lbl1.Create(Label,"Scan Labor Barcode ",True,4095,255,0,690,180,True,0,"Arial",8,-2147483633,0)
+Gui.f_matlreq.lbl1.ForeColor(0)
+Gui.f_matlreq.lbl2.Create(Label,"Successful              Failed",True,2505,255,0,960,900,True,0,"Arial",8,-2147483633,0)
+Gui.f_matlreq.txt2.Create(TextBox,"",True,180,300,0,2100,840,True,0,"Arial",8,255,1)
+Gui.f_matlreq.txt3.Create(TextBox,"",True,180,300,0,675,840,True,0,"Arial",8,49152,1)
+Gui.f_MDisp2..Create
+Gui.f_MDisp2..Caption("Material Handler Dispatch v2")
+Gui.f_MDisp2..Size(20850,10695)
+Gui.f_MDisp2..MinX(0)
+Gui.f_MDisp2..MinY(0)
+Gui.f_MDisp2..Position(0,0)
+Gui.f_MDisp2..BackColor(-2147483633)
+Gui.f_MDisp2..MousePointer(0)
+Gui.f_MDisp2..Event(UnLoad,f_MDisp2_Unload)
+Gui.f_MDisp2.MatlReq.Create(Button)
+Gui.f_MDisp2.MatlReq.Size(1410,765)
+Gui.f_MDisp2.MatlReq.Position(390,345)
+Gui.f_MDisp2.MatlReq.Caption("Material Req")
+Gui.f_MDisp2.MatlReq.Event(Click,Matlreq2_Click)
+Gui.f_MDisp2.cmdClose.Create(Button)
+Gui.f_MDisp2.cmdClose.Size(1005,480)
+Gui.f_MDisp2.cmdClose.Position(19590,135)
+Gui.f_MDisp2.cmdClose.Caption("Exit")
+Gui.f_MDisp2.cmdClose.Event(Click,f_MDisp2_Unload)
+Gui.f_MDisp2.Refresh.Create(Button)
+Gui.f_MDisp2.Refresh.Size(1005,480)
+Gui.f_MDisp2.Refresh.Position(17535,135)
+Gui.f_MDisp2.Refresh.Caption("REFRESH")
+Gui.f_MDisp2.Refresh.Event(Click,Refresh)
+Gui.f_MDisp2.txt1.Create(TextBox,"",True,165,300,0,18675,870,True,0,"Arial",8,32768,1)
+Gui.f_MDisp2.txt2.Create(TextBox,"Picking in Progress",True,1530,195,0,18960,930,True,0,"Arial",8,-2147483633,0)
+Gui.f_MDisp2.GSGCDispatch2.Create(GsGridControl)
+Gui.f_MDisp2.GSGCDispatch2.Size(20175,8655)
+Gui.f_MDisp2.GSGCDispatch2.Position(390,1410)
+Gui.f_MDisp2.GSGCDispatch2.Event(RowCellClick,f_MDisp2_RowCellClick)
+Gui.f_MDisp2.picGSSLogo.Create(PictureBox)
+Gui.f_MDisp2.picGSSLogo.Size(4125,960)
+Gui.f_MDisp2.picGSSLogo.Position(8340,90)
+Gui.f_MDisp2.cmdExport.Create(Button)
+Gui.f_MDisp2.cmdExport.Size(960,480)
+Gui.f_MDisp2.cmdExport.Position(18585,135)
+Gui.f_MDisp2.cmdExport.Caption("Export")
+Gui.f_MDisp2.cmdExport.Event(Click,cmd_Export_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.Global.GuiUserNo.Declare(String)
+Variable.Global.GuiUserName.Declare(String)
+Variable.Global.sJob.Declare(String)
+Variable.Global.sSuffix.Declare(String)
+Variable.Global.sSeq.Declare(String)
+Variable.Global.sPart.Declare(String)
+Variable.Global.sSQLDate.Declare(String)
+Variable.Global.sWoSuffix.Declare(String)
+Variable.Global.sWO.Declare(String)
+Variable.Global.sWoSeq.Declare(String)
+Variable.Global.sWC.Declare(String)
+V.Global.bLoadData.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+' This program will provide an interface for a material handling department to be able to fill requests for material movements
+' It is based on a custom table GAB_4605_MATL_HNDL that is populated by a modified version of the WIP move ticket and a custom
+' material request screen accessed from the GUI
+' Hooks:  15710, 15760, 15770
+' Script 2 in GUI:  Material Dispatch Screen - Hook 15770
+' Script 1 in GUI:  Material Request Screen - Hook 15760
+' Created by:  JTW
+' Created on:  12/29/15
+' Modified by:  JTW
+' Modified on:  6/20/16
+' Modified by:	BS
+' Modified on:  5/31/17
+' Modified on:	10/20/17 converted Grid to grid control from flexgrid and changed requests to be by material sequence up to last labor step
+
+
+V.Local.sIcon.Declare
+	V.Local.sGssLogo.Declare
+
+	F.Intrinsic.String.Build("{0}\GAB\GAS\gss2.ico",V.Caller.PluginsDir,v.Local.sIcon)
+	F.Intrinsic.String.Build("{0}\GAB\GAS\GAB_GSS_Logo_Green_Dash.png",V.Caller.PluginsDir,V.Local.sGssLogo)
+	Gui.f_MDisp2.picGSSLogo.Picture(V.Local.sGssLogo)
+	Gui.f_MDisp2..Icon(V.Local.sIcon)
+
+F.Intrinsic.Control.CallSub(Tableexists2)
+F.Intrinsic.Control.CallSub(SetAnchors)
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	F.Intrinsic.Control.Case("15710")
+		V.Passed.000020.Set("MATL Disp")
+		V.Passed.000016.Set("MATL Req")
+	F.Intrinsic.Control.Case("15770")
+		F.Intrinsic.Control.CallSub(Checksec)
+'		F.Intrinsic.Control.CallSub(Buildstyle)
+		F.Intrinsic.Control.CallSub(Dispatch2)
+	F.Intrinsic.Control.Case("15760")
+		F.Intrinsic.Control.CallSub(Checksec)
+		F.Intrinsic.Control.CallSub(Matlreq2)
+'		F.Intrinsic.Control.CallSub(Cleanup)	
+F.Intrinsic.Control.EndSelect
+'called from custom menu GAB hook
+f.Intrinsic.Control.If(v.Caller.Hook,>,"1000000")
+		Gui.f_MDisp2..show
+		F.Intrinsic.Control.CallSub(Checksec)
+'		F.Intrinsic.Control.CallSub(Buildstyle)
+		F.Intrinsic.Control.CallSub(Dispatch2)
+		Gui.f_MDisp2..show		
+f.Intrinsic.Control.EndIf	
+
+Program.Sub.Main.End
+
+Program.Sub.BuildStyle.Start
+' This subroutine will provide the style used for the flex grid
+
+V.Local.sTitles.Declare
+V.Local.iFor.Declare
+
+Gui.f_MDisp.gsfgDispatch.Cols(11)
+Gui.f_MDisp.gsfgDispatch.Rows(2)
+Gui.f_MDisp.gsfgDispatch.SetColumnPercentages(".07:.07:.045:.14:.215:.07:.05:.05:.09:.12:.09")
+
+F.Intrinsic.String.Split("Update*!*W/O*!*Seq.*!*Part*!*Description*!*Qty*!*Origin*!*Dest.*!*Requested By*!*Request Date / Time*!*Status","*!*",V.Local.sTitles)
+
+F.Intrinsic.Control.For(V.Local.iFor,0,V.Local.sTitles.UBound,1)
+	Gui.f_MDisp.gsfgDispatch.TextMatrix(V.Local.iFor,0,V.Local.sTitles(v.Local.iFor))
+	Gui.f_MDisp.gsfgDispatch.BuildStyle(1,V.Local.iFor,"Type","Locked","True")
+	Gui.f_MDisp.gsfgDispatch.BuildStyle(1,V.Local.iFor,"Format","Alignment","4")
+	Gui.f_MDisp.gsfgDispatch.BuildStyle(1,V.Local.iFor,"FontStyle","Bold","True")
+F.Intrinsic.Control.Next(V.Local.iFor)
+
+Gui.f_MDisp.gsfgDispatch.ApplyStyle(0,1)
+Gui.f_MDisp.gsfgDispatch.FixedRows(1)
+
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,0,"Type","Command","Pick/Deliver")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,0,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,0,"Format","Alignment","4")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,0,"Color","Back",v.Color.LtGray)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,1,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,1,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,2,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,2,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,3,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,3,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,4,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,4,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,5,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,5,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,6,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,6,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,7,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,7,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,8,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,8,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,9,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,9,"Format","Alignment",4)
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,10,"Type","Locked","True")
+Gui.f_MDisp.gsfgDispatch.BuildStyle(2,10,"Format","Alignment",4)
+
+Gui.f_MDisp.gsfgDispatch.ApplyStyle(1,2)
+
+Gui.f_BinList.gsfgBinList.Cols(5)
+Gui.f_BinList.gsfgBinList.Rows(2)
+Gui.f_BinList.gsfgBinList.SetColumnPercentages(".08:.2:.2:.4:.12")
+
+F.Intrinsic.String.Split("Bin*!*Lot*!*Heat*!*Serial*!*Quantity","*!*",V.Local.sTitles)
+
+F.Intrinsic.Control.For(V.Local.iFor,0,V.Local.sTitles.UBound,1)
+	Gui.f_BinList.gsfgBinList.TextMatrix(V.Local.iFor,0,V.Local.sTitles(v.Local.iFor))
+	Gui.f_BinList.gsfgBinList.BuildStyle(3,V.Local.iFor,"Type","Locked","True")
+	Gui.f_BinList.gsfgBinList.BuildStyle(3,V.Local.iFor,"Format","Alignment","4")
+	Gui.f_BinList.gsfgBinList.BuildStyle(3,V.Local.iFor,"FontStyle","Bold","True")
+	Gui.f_BinList.gsfgBinList.BuildStyle(3,V.Local.iFor,"FontStyle","Size",12)
+F.Intrinsic.Control.Next(V.Local.iFor)
+
+Gui.f_BinList.gsfgBinList.ApplyStyle(0,3)
+Gui.f_BinList.gsfgBinList.FixedRows(1)
+
+F.Intrinsic.Control.For(V.Local.iFor,0,V.Local.sTitles.UBound,1)
+	Gui.f_BinList.gsfgBinList.BuildStyle(4,V.Local.iFor,"Type","Locked","True")
+	Gui.f_BinList.gsfgBinList.BuildStyle(4,V.Local.iFor,"Format","Alignment",4)
+	Gui.f_BinList.gsfgBinList.BuildStyle(4,V.Local.iFor,"FontStyle","Size",12)
+F.Intrinsic.Control.Next(V.Local.iFor)
+
+Gui.f_BinList.gsfgBinList.ApplyStyle(1,4)
+
+Program.Sub.BuildStyle.End
+
+Program.Sub.Dispatch.Start
+' This subroutine will call the material handling dispatch screen
+
+V.Local.iRows.Declare
+V.Local.sAmt.Declare
+V.Local.iFor.Declare
+V.Local.sOrigin.Declare
+v.Local.sstatus.Declare
+
+Gui.f_MDisp..Visible(0)
+Gui.f_MDisp.tmrRefresh.Enabled(True)
+Gui.f_MDisp.tmrRefresh.Interval(0)
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstSel","Select status, (select case when suffix <> '###' then job+'-'+suffix else job end) as WO,seq,part,description,quantity,origin,destination,req_by,date_req,picked_by from GAB_4605_MATL_HNDL where Status <> 'DELIVERED' order by Status desc, date_req")
+Gui.f_MDisp.gsfgDispatch.LoadRecordset("con!rstSel",2)
+V.Local.iRows.Set(V.Screen.f_MDisp!gsfgDispatch.Rows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+Gui.f_MDisp.gsfgDispatch.Rows(V.Local.iRows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+
+
+F.Intrinsic.Control.For(V.Local.iFor,1,V.Local.iRows,1)
+	Gui.f_MDisp.gsfgDispatch.RowHeight(V.Local.iFor,750)
+	f.Intrinsic.Control.If(v.Local.iFor,=,"1")
+		Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(0,0,"Backcolor",V.Color.LtGray)
+	f.Intrinsic.Control.EndIf					
+	Gui.f_MDisp.gsfgDispatch.GetTextMatrix(6,V.Local.iFor,V.Local.sOrigin)	
+	Gui.f_MDisp.gsfgDispatch.GetTextMatrix(10,V.Local.iFor,V.Local.sstatus)
+	F.Intrinsic.Control.If(V.Local.sOrigin,=,"Multiple")
+		Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(6,V.Local.iFor,"Forecolor",V.Color.LtBlue)
+		'Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(6,V.Local.iFor,"Font","Underline","True")
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.Local.sstatus.Trim,<>,"OPEN")
+		f.Intrinsic.Control.If(v.Local.iFor,=,"1")
+			Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(10,0,"forecolor",V.Color.Green)
+		f.Intrinsic.Control.Else	
+			Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(10,V.Local.iFor,"forecolor",V.Color.Green)	
+		f.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iFor)
+'F.ODBC.Connection!con.CloseRecordsets
+F.ODBC.Connection!con.Close
+
+Gui.f_MDisp..show
+
+
+
+Program.Sub.Dispatch.End
+
+Program.Sub.f_MDisp_Unload.Start
+Gui.f_MDisp..Visible(0)
+F.Intrinsic.Control.End
+
+Program.Sub.f_MDisp_Unload.End
+
+Program.Sub.gsfgDispatch_CommandClick.Start
+' This subroutine will update the line to Picked or Closed
+
+V.Local.sWorkOrder.Declare
+V.Local.sSuffix.Declare
+V.Local.sSeq.Declare
+V.Local.sPart.Declare
+V.Local.sStatus.Declare
+V.Local.sName.Declare
+V.Local.iDash.Declare
+V.Local.sSQL.Declare
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sWoPrevSeq.Declare
+V.Local.sReqDateTime.Declare
+V.Local.sDate.Declare
+V.Local.sTime.Declare
+V.Local.sMonth.Declare
+V.Local.sDay.Declare
+V.Local.sYear.Declare
+V.Local.sHours.Declare
+V.Local.sMinutes.Declare
+V.Local.sSeconds.Declare
+V.Local.sSQLDate.Declare
+V.Local.sNowDate.Declare
+
+Gui.f_MDisp.gsfgDispatch.GetTextMatrix(1,V.Args.key,V.Local.sWorkOrder)
+Gui.f_MDisp.gsfgDispatch.GetTextMatrix(2,V.Args.key,V.Local.sSeq)
+Gui.f_MDisp.gsfgDispatch.GetTextMatrix(3,V.Args.key,V.Local.sPart)
+Gui.f_MDisp.gsfgDispatch.GetTextMatrix(9,V.Args.key,V.Local.sReqDateTime)
+Gui.f_MDisp.gsfgDispatch.GetTextMatrix(10,V.Args.key,V.Local.sName)
+
+	
+
+	' Convert Flexgrid Datetime to SQL Datetime
+	F.Intrinsic.String.DateString(V.Local.sReqDateTime,V.Local.sDate)
+	F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+	F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+	F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+	F.Intrinsic.String.TimeStringsec(V.Local.sReqDateTime,V.Local.sTime)
+	F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+	F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+	F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+	F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.local.sSQLDate)
+	
+	F.Intrinsic.String.Instr(V.Local.sWorkOrder,"-",0,V.Local.iDash)
+	F.Intrinsic.Control.If(V.Local.iDash,>,0)
+		F.Intrinsic.String.Right(V.Local.sWorkOrder,3,V.Local.sSuffix)
+		F.Intrinsic.String.Left(V.Local.sWorkOrder,6,V.Local.sWorkOrder)
+	F.Intrinsic.Control.Else
+		V.Local.sSuffix.Set("###")
+	F.Intrinsic.Control.EndIf
+	
+	
+	
+	F.Intrinsic.String.Build("Select Status from GAB_4605_MATL_HNDL where Job = '{0}' and Suffix = '{1}' and Seq = '{2}' and Part = '{3}' and Date_Req = '{4}'",V.Local.sWorkOrder,V.Local.sSuffix,V.Local.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSel)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+	F.ODBC.Connection!con.Close
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sStatus)
+	F.Intrinsic.String.Trim(V.Local.sStatus(0),V.Local.sStatus(0))
+	
+	' Convert V.Ambient.Now to SQL Datetime
+	F.Intrinsic.String.DateString(V.Ambient.Now,V.Local.sDate)
+	F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+	F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+	F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+	F.Intrinsic.String.TimeStringsec(V.Ambient.Now,V.Local.sTime)
+	F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+	F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+	F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+	F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.Local.sNowDate)
+	
+	
+	
+	F.Intrinsic.Control.If(v.Local.sName.Trim,<>,v.Global.GuiUserName,and,v.Local.sStatus(0),=,"PICKING")
+		F.Intrinsic.UI.Msgbox("Material is being picked by another employee","On-Line GUI Message")
+	F.Intrinsic.Control.Else
+	Gui.f_MDisp..Visible(0)
+		F.Intrinsic.Control.SelectCase(V.Local.sStatus(0))
+			F.Intrinsic.Control.Case("OPEN")
+				F.Intrinsic.String.Build("update GAB_4605_MATL_HNDL set status = 'PICKING', Date_Picked = '{0}', Picked_By = '{1}' where Job = '{2}' and Suffix = '{3}' and Seq = '{4}' and Part = '{5}' and Date_Req = '{6}'",V.Local.sNowDate,V.Global.GuiUserName,V.Local.sWorkOrder,V.Local.sSuffix,V.Local.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSQL)
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				F.ODBC.Connection!con.Close
+			F.Intrinsic.Control.Case("PICKING")
+				F.Intrinsic.String.Build("update GAB_4605_MATL_HNDL set status = 'DELIVERED', Date_Del = '{0}', Del_By = '{1}' where Job = '{2}' and Suffix = '{3}' and Seq = '{4}' and Part = '{5}' and Date_Req = '{6}'",V.Local.sNowDate,V.Global.GuiUserName,V.Local.sWorkOrder,V.Local.sSuffix,V.Local.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSQL)
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				F.ODBC.Connection!con.Close
+				' Find the previous labor sequence for the work order
+				F.Intrinsic.Control.If(V.Local.sSuffix,=,"###")
+					F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SEQ < '{1}' and LMO = 'L' order by SEQ desc",V.Local.sWorkOrder,V.Local.sSeq,V.Local.sSel)
+				F.Intrinsic.Control.Else
+					F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ < '{2}' and LMO = 'L' order by SEQ desc",V.Local.sWorkOrder,V.Local.sSuffix,V.Local.sSeq,V.Local.sSel)
+				F.Intrinsic.Control.EndIf
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+				F.ODBC.Connection!con.Close
+				' Remove any WIP in Bins for this Work Order and Previous sequence
+				F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+					V.Local.sWoPrevSeq.Set(V.Local.sRet)
+					F.Intrinsic.Control.If(V.Local.sSuffix,=,"###")
+						F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}'",V.Local.sWorkOrder,V.Local.sWoPrevSeq,V.Local.sSQL)
+					F.Intrinsic.Control.Else
+						F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.Local.sWorkOrder,V.Local.sSuffix,V.Local.sWoPrevSeq,V.Local.sSQL)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+					F.ODBC.Connection!con.Execute(V.Local.sSQL)
+					F.ODBC.Connection!con.Close
+				F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndSelect
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.CallSub(Dispatch)
+
+
+Program.Sub.gsfgDispatch_CommandClick.End
+
+Program.Sub.CheckSec.Start
+' Check to see that there is an active user
+
+V.Local.sInitial.Declare
+V.Local.sLastName.Declare
+V.Local.iPos.Declare
+V.Local.iLen.Declare
+'check if called from the GUI or GS Menu
+f.Intrinsic.Control.If(v.Caller.Hook,>,"1000000")
+	V.Global.GuiUserName.Set(v.Caller.User)
+f.Intrinsic.Control.Else
+	V.Global.GuiUserName.Set(V.Passed.000005)
+	V.Global.GuiUserNo.Set(V.Passed.009993)
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Global.GuiUserName,=,"")
+	F.Intrinsic.UI.Msgbox("Please select/scan an employee first","On-line GUI Message")
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+f.Intrinsic.Control.If(v.Caller.Hook,<,"1000000")
+	F.Intrinsic.String.Left(V.Global.GuiUserName,1,V.Local.sInitial)
+	F.Intrinsic.String.Concat(V.Local.sInitial,". ",V.Local.sInitial)
+	F.Intrinsic.String.Instr(V.Global.GuiUserName," ",V.Local.iPos)
+	F.Intrinsic.String.Len(V.Global.GuiUserName,V.Local.iLen)
+	F.Intrinsic.Math.Sub(V.Local.iLen,V.Local.iPos,V.Local.iLen)
+	F.Intrinsic.String.Right(V.Global.GuiUserName,V.Local.iLen,V.Local.sLastName)
+	F.Intrinsic.String.Concat(V.Local.sInitial,V.Local.sLastName,V.Global.GuiUserName)
+	F.Intrinsic.String.Left(V.Global.GuiUserName,15,V.Global.GuiUserName)
+f.Intrinsic.Control.endif
+Program.Sub.CheckSec.End
+
+Program.Sub.MatlReq.Start
+' This subroutine will write a material request to GAB_4605_MATL_HNDL when a GUI user highlights a line and clicks Script 1
+
+V.Local.sLMO.Declare
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sDate.Declare
+V.Local.sTime.Declare
+V.Local.sMonth.Declare
+V.Local.sDay.Declare
+V.Local.sYear.Declare
+V.Local.sHours.Declare
+V.Local.sMinutes.Declare
+V.Local.sSeconds.Declare
+
+' Convert V.Ambient.Now to SQL Datetime
+F.Intrinsic.String.DateString(V.Ambient.Now,V.Local.sDate)
+F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+F.Intrinsic.String.TimeStringsec(V.Ambient.Now,V.Local.sTime)
+F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.Global.sSQLDate)
+
+
+'called from custom menu GAB hook
+f.Intrinsic.Control.If(v.Caller.Hook,<,"1000000")
+	V.Local.sLMO.Set(V.Passed.009989)
+	V.Global.sWO.Set(V.Passed.009990)
+	V.Global.sWoSuffix.Set(V.Passed.009991)
+	V.Global.sWoSeq.Set(V.Passed.009992)
+	V.Global.sWC.Set(V.Passed.009996)
+f.Intrinsic.Control.else
+' scan string will be $%123456778901000
+	v.Local.sScantxt.Declare(String)
+	v.Local.sScantxt.Set(V.Screen.f_matlreq!txt1.Text)
+	f.Intrinsic.String.Mid(v.Local.sScantxt,3,15,v.Local.sScantxt)
+	f.Intrinsic.String.Left(v.Local.sScantxt,6,v.Global.sWO)
+	f.Intrinsic.String.Mid(v.Local.sScantxt,7,3,v.Global.sWoSuffix)
+	f.Intrinsic.String.Trim(v.Global.sWoSuffix,v.Global.sWoSuffix)
+	f.Intrinsic.String.Right(v.Local.sScantxt,6,v.Global.sWoSeq)
+	'add sWC
+	F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+	v.Global.sWC.Set(v.Local.sRet)
+	F.ODBC.Connection!con.Close
+f.Intrinsic.Control.endif
+
+F.Intrinsic.Control.If(V.Global.sWC,=,"ZIND")
+	F.Intrinsic.UI.Msgbox("Please select a Work Order Line first","On-line GUI Message")
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"")
+		V.Global.sWoSuffix.Set("###")
+	F.Intrinsic.Control.EndIf
+	' Check to see that it is a labor sequence
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select LMO from V_JOB_OPERATIONS where JOB = '{0}' and SEQ = '{1}'",V.Global.sWO,V.Global.sWoSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select LMO from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"L")
+		F.Intrinsic.UI.Msgbox("Please select a labor sequence","On-line GUI Message")
+		'gui.f_matlreq.lbl1.Caption("Please select a labor sequence")
+		'Gui.f_matlreq.lbl1.ForeColor(V.Color.Red)
+		Gui.f_matlreq.txt1.BackColor(V.Color.LtRed)
+		F.ODBC.Connection!con.Close
+		'F.Intrinsic.Control.End
+
+'		Gui.f_MDisp..Visible(0)
+'		Gui.f_MDisp.tmrRefresh.Interval(0)
+'		Gui.f_MDisp..show
+		gui.f_matlreq.txt1.Text("")	
+						
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.CallSub(Requestwip)
+		F.ODBC.Connection!con.Close
+		'F.Intrinsic.Control.CallSub(f_matlreq_unload)
+		'F.Intrinsic.Control.CallSub(Dispatch)
+		gui.f_matlreq.txt1.Text("")	
+		'gui.f_matlreq.lbl1.Caption("Scan Labor Barcode")
+		'Gui.f_matlreq.lbl1.ForeColor(V.Color.Black)
+	F.Intrinsic.Control.EndIf	
+F.Intrinsic.Control.EndIf
+'F.Intrinsic.Control.CallSub(f_matlreq_unload)
+
+Program.Sub.MatlReq.End
+
+Program.Sub.Cleanup.Start
+' This subroutine will clean out records older than 60 days
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!con.Execute("delete from GAB_4605_MATL_HNDL where DATE_DEL < curdate()-60")
+F.ODBC.Connection!con.Close
+
+
+Program.Sub.Cleanup.End
+
+Program.Sub.fgDisp_MouseUp.Start
+' Capture the Work Order, Suffix, and Sequence from the flex grid
+
+V.Local.iLen.Declare
+V.Local.sBin.Declare
+V.Local.sRet.Declare
+V.Local.sSel.Declare
+V.Local.sType.Declare
+v.Local.stemp.Declare
+
+
+F.Intrinsic.Control.If(v.Args.mousecol,<>,0,and,v.Args.Mouserow,<>,0)
+	Gui.f_MDisp.gsfgDispatch.GetTextMatrix(1,V.Args.Mouserow,V.Global.sJob)
+	Gui.f_MDisp.gsfgDispatch.GetTextMatrix(2,V.Args.Mouserow,V.Global.sSeq)
+	F.Intrinsic.String.Len(V.Global.sJob,V.Local.iLen)
+	F.Intrinsic.Control.If(V.Local.iLen,>,6)
+		F.Intrinsic.String.Right(V.Global.sJob,3,V.Global.sSuffix)
+		F.Intrinsic.String.Left(V.Global.sJob,6,V.Global.sJob)
+	f.Intrinsic.Control.Else
+	v.Global.sSuffix.Set("")
+	F.Intrinsic.Control.EndIf	
+	'set label for active WO
+	v.Local.stemp.Set(v.Global.sJob)
+	
+	f.Intrinsic.String.Concat(v.Local.stemp," ",v.Global.sSuffix,v.Local.stemp)
+	gui.f_MDisp.lblWO.Caption(v.Local.stemp)
+	'Gui.f_MDisp.gsfgDispatch.GSGOverrideProperty(1,V.Args.mouserow,"backcolor",V.Color.GSS)
+	
+	' If the Bin is Multiple then open the Bin Listing Window	
+	F.Intrinsic.Control.If(V.Args.mousecol,=,6)
+		Gui.f_MDisp.gsfgDispatch.GetTextMatrix(6,V.Args.Mouserow,V.Local.sBin.trim)
+		F.Intrinsic.Control.If(V.Local.sBin,=,"Multiple")
+			Gui.f_MDisp.gsfgDispatch.GetTextMatrix(3,V.Args.Mouserow,V.Global.sPart)
+			' Open the Connection
+			F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+			' Get the Type
+			F.Intrinsic.String.Build("select top 1 TYPE from GAB_4605_MATL_HNDL where JOB = '{0}' AND SUFFIX = '{1}' AND SEQ = '{2}' AND PART = '{3}'",V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Global.sPart,V.Local.sSel)
+			F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+			' Close the connection
+			F.ODBC.Connection!con.Close
+			V.Local.sType.Set(V.Local.sRet)
+			F.Intrinsic.Control.CallSub(Binlist,"Type",V.Local.sType)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf	
+F.Intrinsic.Control.EndIf
+Program.Sub.fgDisp_MouseUp.End
+
+Program.Sub.MatlPick_Click.Start
+' This subroutine will print the material pick ticket
+V.Local.sParams.Declare
+V.Local.sValues.Declare
+V.Local.iRptId.Declare
+V.Local.srptLoc.Declare
+V.Local.sbfseq.Declare(String)
+v.Local.ssel.Declare(String)
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.String.Concat("select Seq from V_JOB_OPERATIONS where JOB='",V.Global.sjob,"' and SUFFIX='",V.Global.ssuffix,"' and LMO = 'L' and SEQ<'",V.Global.sseq,"' order by SEQ desc",V.Local.sSel)
+F.ODBC.Connection!con.OpenRecordsetRO("rstSel",V.Local.sSel)
+	F.Intrinsic.Control.If(V.ODBC.con!rstSel.EOF,=,false)
+		V.Local.sbfseq.Set(V.ODBC.con!rstSel.FieldValTrim!Seq)
+	F.Intrinsic.Control.EndIf
+F.ODBC.con!rstSel.Close
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.If(V.Global.sJob,<>,"")
+	F.Intrinsic.String.Concat(V.Global.sjob,"*!*",V.Global.ssuffix,"*!*",V.Global.sseq,"*!*",V.Local.sbfseq,V.Local.sValues)
+	F.Intrinsic.String.Split("Job*!*Suffix*!*Seq*!*BFSeq","*!*",V.Local.sParams)
+	F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+	F.Intrinsic.String.Concat(V.Caller.BusintDir,"\Custom\Pick_ticket_dispatch.rpt",V.Local.srptLoc)
+	F.Global.BI.InitializeReport("Pick_ticket_dispatch",V.Local.srptLoc,V.Local.iRptId)
+	F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,"",True)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please Select a Sequence First","On-line GUI Message")
+F.Intrinsic.Control.EndIf
+
+
+Program.Sub.MatlPick_Click.End
+
+Program.Sub.BinList.Start
+' This subroutine will route the program to the WIP and Raw material bin list screens
+
+' If the Type is W then open the WIP Bin List
+F.Intrinsic.Control.SelectCase(V.Args.Type)
+	F.Intrinsic.Control.Case("W")
+		F.Intrinsic.Control.CallSub(Binlistwip)
+	' If the type is M then open the Raw Bin List
+	F.Intrinsic.Control.Case("M")
+		F.Intrinsic.Control.CallSub(Binlistraw)
+F.Intrinsic.Control.EndSelect
+
+
+Program.Sub.BinList.End
+
+Program.Sub.BinListExit.Start
+Gui.f_BinList..Visible(0)
+F.Intrinsic.Control.CallSub(Dispatch)
+
+Program.Sub.BinListExit.End
+
+Program.Sub.TableExists.Start
+' This subroutine will check to see if GAB_4605_MATL_HNDL exists and will create it if it doesn't
+
+V.Local.bExists.Declare
+V.Local.sSQL.Declare
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!Con.TableExists("GAB_4605_MATL_HNDL",V.Local.bExists)
+
+' Create the table if it doesn't exist
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	' Build the create statement
+	V.Local.sSQL.Set("CREATE TABLE GAB_4605_MATL_HNDL(JOB CHAR(6) NOT NULL ,SUFFIX CHAR(3),SEQ CHAR(6) NOT NULL ,PART CHAR(20) NOT NULL ,DESCRIPTION CHAR(30) NOT NULL ,QUANTITY NUMERIC(12,4) NOT NULL ,ORIGIN CHAR(8) NOT NULL ,DESTINATION CHAR(8) NOT NULL ,REQ_BY CHAR(15) NOT NULL ,DATE_REQ DATETIME NOT NULL ,PICKED_BY CHAR(15),DATE_PICKED DATETIME,DEL_BY CHAR(15),DATE_DEL DATETIME,STATUS CHAR(10) NOT NULL,TYPE CHAR(1) NOT NULL )")
+	'V.Local.sSQL.Set("CREATE TABLE GAB_4807_MATL_HNDL(JOB CHAR(6) NOT NULL ,SUFFIX CHAR(3),SEQ CHAR(6) NOT NULL ,PART CHAR(20) NOT NULL ,QUANTITY NUMERIC(12,4) NOT NULL ,QOH NUMERIC(12,4),Q_PO NUMERIC(12,4),BIN_1 CHAR(6), BIN_2 CHAR(6),BIN_3 CHAR(6),BIN_TO CHAR(6),SEQ_DUEDATE DATE NOT NULL, ORIGIN CHAR(8) NOT NULL ,DESTINATION CHAR(8) NOT NULL ,REQ_BY CHAR(15) NOT NULL ,DATE_REQ DATETIME NOT NULL ,PICKED_BY CHAR(15),DATE_PICKED DATETIME,DEL_BY CHAR(15),DATE_DEL DATETIME,STATUS CHAR(10) NOT NULL,TYPE CHAR(1) NOT NULL )")
+	' Execute the create statement
+	F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!con.Close
+
+Program.Sub.TableExists.End
+
+Program.Sub.BinListWIP.Start
+' This subroutine will open a list of WIP Bins with Quantities
+' The title of the window will be Work Order, Suffix, and Sequence
+
+V.Local.sTitle.Declare
+V.Local.sSel.Declare
+V.Local.iRows.Declare
+V.Local.sPrevSeq.Declare
+V.Local.iFor.Declare
+
+' Put the Work Order and Suffix in the Window Caption
+F.Intrinsic.Control.If(V.Global.sSuffix.Trim,=,"")
+	F.Intrinsic.String.Concat("W/O: ",V.Global.sJob,V.Local.sTitle)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Concat("W/O: ",V.Global.sJob,"-",V.Global.sSuffix,V.Local.sTitle)
+F.Intrinsic.Control.EndIf
+Gui.f_BinList..Caption(V.Local.sTitle)
+
+' Find the previous labor sequence for the work order
+F.Intrinsic.Control.If(V.Global.sSuffix.Trim,=,"")
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SEQ < '{1}' and LMO = 'L' order by SEQ desc",V.Global.sJob,V.Global.sSeq,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ < '{2}' and LMO = 'L' order by SEQ desc",V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sPrevSeq)
+
+F.ODBC.Connection!con.CloseRecordsets
+F.ODBC.Connection!con.Close
+
+' Get Records from WIP_BIN and load into gsfgBinList
+F.Intrinsic.String.Build("Select BIN,'' as LOT,'' as HEAT,'' as SERIAL, QTY_BIN from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}' and QTY_BIN > 0",V.Global.sJob,V.Global.sSuffix,V.Local.sPrevSeq,V.Local.sSel)
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstSel",V.Local.sSel)
+Gui.f_BinList.gsfgBinList.LoadRecordset("con!rstSel",4)
+V.Local.iRows.Set(V.Screen.f_BinList!gsfgBinList.Rows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+Gui.f_BinList.gsfgBinList.Rows(V.Local.iRows)
+
+F.ODBC.Connection!con.CloseRecordsets
+F.ODBC.Connection!con.Close
+
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+F.Intrinsic.Control.For(V.Local.iFor,0,V.Local.iRows,1)
+	Gui.f_BinList.gsfgBinList.RowHeight(V.Local.iFor,400)
+F.Intrinsic.Control.Next(V.Local.iFor)
+
+Gui.f_BinList..show
+
+
+
+Program.Sub.BinListWIP.End
+
+Program.Sub.BinListRaw.Start
+' This subroutine will open a list of Raw Material Bins with Quantities
+' The title of the window will be Part Number
+
+V.Local.sTitle.Declare
+V.Local.sSel.Declare
+V.Local.iRows.Declare
+V.Local.iFor.Declare
+
+' Put the Part in the Window Caption
+Gui.f_BinList..Caption(V.Global.sPart)
+
+' Get Records from WIP_BIN and load into gsfgBinList
+F.Intrinsic.String.Build("Select BIN,LOT,HEAT,SERIAL_NUMBER, QUANTITY from ITEM_MASTER where PART = '{0}' and QUANTITY > 0",V.Global.sPart,V.Local.sSel)
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rstSel",V.Local.sSel)
+Gui.f_BinList.gsfgBinList.LoadRecordset("con!rstSel",4)
+V.Local.iRows.Set(V.Screen.f_BinList!gsfgBinList.Rows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+Gui.f_BinList.gsfgBinList.Rows(V.Local.iRows)
+
+F.ODBC.Connection!con.CloseRecordsets
+F.ODBC.Connection!con.Close
+
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+F.Intrinsic.Control.For(V.Local.iFor,0,V.Local.iRows,1)
+	Gui.f_BinList.gsfgBinList.RowHeight(V.Local.iFor,400)
+F.Intrinsic.Control.Next(V.Local.iFor)
+
+Gui.f_BinList..show
+
+
+Program.Sub.BinListRaw.End
+
+Program.Sub.RequestWIP.Start
+' This subroutine will write the line to GAB_4605_MATL_HNDL for the WIP request
+
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sSQL.Declare
+V.Local.sOrigin.Declare
+V.Local.sQty.Declare
+V.Local.sMessage.Declare
+V.Local.sWoPrevSeq.Declare
+V.Local.sWCPrev.Declare
+V.Local.sWIPBin.Declare
+V.Local.sPart.Declare
+V.Local.sDesc.Declare
+
+' Find the part number for the work order
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select Part from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Part from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+V.Local.sPart.Set(V.Local.sRet)
+' Find the previous labor sequence for the work order
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SEQ < '{1}' and LMO = 'L' order by SEQ desc",V.Global.sWO,V.Global.sWoSeq,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ < '{2}' and LMO = 'L' order by SEQ desc",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,=,"")
+	V.Local.sWoPrevSeq.Set("NONE")
+	V.Local.sWCPrev.Set("N/A")
+F.Intrinsic.Control.Else
+	V.Local.sWoPrevSeq.Set(V.Local.sRet)
+	' Find the previous work center
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SEQ = '{1}' and LMO = 'L'",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}' and LMO = 'L'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sWCPrev)
+	F.Intrinsic.String.Trim(V.Local.sWCPrev,V.Local.sWCPrev)
+F.Intrinsic.Control.EndIf
+' Find the part description
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select Description from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Description from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+V.Local.sDesc.Set(V.Local.sRet)
+' Set sBin equal to sWIPBin, if multiple then set sBin to Multi, if blank then set sBin to WIP
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select BIN from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}' and QTY_BIN > 0",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select BIN from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}' and QTY_BIN > 0",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sWIPBin)
+F.Intrinsic.String.Trim(V.Local.sWIPBin(0),V.Local.sWIPBin(0))
+F.Intrinsic.Control.If(V.Local.sWIPBin.UBound,>,0)
+	V.Local.sOrigin.Set("Multiple")
+F.Intrinsic.Control.ElseIf(V.Local.sWIPBin(0),=,"")
+	V.Local.sOrigin.Set(V.Local.sWCPrev)
+F.Intrinsic.Control.Else
+	V.Local.sOrigin.Set(V.Local.sWIPBin(0))
+F.Intrinsic.Control.EndIf
+' Fill the quantity with the WIP_BIN.QTY_BIN sum or the work order quantity if no WIP in Bins
+F.Intrinsic.Control.SelectCase(V.Local.sWIPBin(0))
+F.Intrinsic.Control.Case("")
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select QTY_ORDER from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select QTY_ORDER from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.CaseElse
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select sum(QTY_BIN) as Qty from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}'",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select sum(QTY_BIN) as Qty from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndSelect
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+V.Local.sQty.Set(V.Local.sRet)
+' Write the line to GAB_4605_MATL_HNDL if it doesn't already exist
+F.Intrinsic.String.Build("Select status from GAB_4605_MATL_HNDL where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,=,"")
+	F.Intrinsic.String.Build("Insert into GAB_4605_MATL_HNDL (Job, Suffix, Seq, Part, Description, Quantity, Origin, Destination, Req_By, Date_Req, Picked_By, Status,Type) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','W')",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sPart,V.Local.sDesc,V.Local.sQty,V.Local.sOrigin,V.Global.sWC,V.Global.GuiUserName,V.Global.sSQLDate,"OPEN","OPEN",V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	' Create requests for manufactured components if it is the first labor sequence
+	F.Intrinsic.Control.If(V.Local.sOrigin,=,"N/A")
+		F.Intrinsic.Control.CallSub(Request99xxxx)
+	F.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Caller.Hook,<,"1000000")
+		F.Intrinsic.UI.Msgbox("Request sent successfully","On-line GUI Message")
+	f.Intrinsic.Control.Else
+		Gui.f_matlreq.txt1.BackColor(V.Color.LtGreen)
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Request already exists and the status is {0}",V.Local.sRet,V.Local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.Local.sMessage,"On-line GUI Message")
+	Gui.f_matlreq.txt1.BackColor(V.Color.LtRed)
+F.Intrinsic.Control.EndIf
+
+
+
+Program.Sub.RequestWIP.End
+
+Program.Sub.RequestMATL.Start
+Program.Sub.RequestMATL.End
+
+Program.Sub.Request99xxxx.Start
+' This subroutine will get a list of the manufactured components for a job and make a material request for each one if one does not already exist
+
+V.Local.iFor.Declare
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sMatl.Declare
+V.Local.sSQL.Declare
+V.Local.sPDQ.Declare
+V.Local.sPart.Declare
+V.Local.sDesc.Declare
+V.Local.sQty.Declare
+V.Local.sOrigin.Declare
+V.Local.bInstr.Declare
+V.Local.bEmpty.Declare
+V.Local.iLen.Declare
+
+' Get a list of 99xxxx sequences from the work order
+
+' Build the string to get the list
+F.Intrinsic.String.Build("select SEQ from V_JOB_OPERATIONS where SEQ >= '990000' and SEQ < '995000' and JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+
+' Execute and return
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+' If there are sequences
+F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+
+	' Remove #$#
+	F.Intrinsic.String.Replace(V.Local.sRet,"#$#","",V.Local.sRet)
+
+	' Remove the last *!*
+	F.Intrinsic.String.Len(V.Local.sRet,V.Local.iLen)
+	F.Intrinsic.Math.Sub(V.Local.iLen,3,V.Local.iLen)
+	F.Intrinsic.String.Left(V.Local.sRet,V.Local.iLen,V.Local.sRet)
+
+	' Split the string
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sMatl)
+
+	' Loop through the material list
+	F.Intrinsic.Control.For(V.Local.iFor,V.Local.sMatl.LBound,V.Local.sMatl.UBound,1)
+
+		' Get Part, Description, and Quantity from V_JOB_OPERATIONS
+		' Build the string to get the values
+		F.Intrinsic.String.Build("select PART, DESCRIPTION, UNITS from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sMatl(v.Local.iFor),V.Local.sSel)
+
+		' Execute and return
+		F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+		' Remove #$#
+		F.Intrinsic.String.Replace(V.Local.sRet,"#$#","",V.Local.sRet)
+
+		' Split the String
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sPDQ)
+
+		' Save the values to friendly names
+		V.Local.sPart.Set(V.Local.sPDQ(0))
+		V.Local.sDesc.Set(V.Local.sPDQ(1))
+		V.Local.sQty.Set(V.Local.sPDQ(2))
+
+		' Get the Origin - "Multiple" when multiple lot/bin records exist, "N/A" when no lot/bin records exist
+		' Build the selection string to query the item master
+		F.Intrinsic.String.Build("select distinct BIN from ITEM_MASTER where PART = '{0}' and QUANTITY > 0",V.Local.sPart,V.Local.sSel)
+
+		' Execute and return
+		F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+		' Check to see if multiple bins were returned
+		F.Intrinsic.String.Instr(V.Local.sRet,"*!*",0,V.Local.bInstr)
+
+		' Check to see if no bins were returned
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+			V.Local.bEmpty.Set(False)
+		F.Intrinsic.Control.Else
+			V.Local.bEmpty.Set(True)
+		F.Intrinsic.Control.EndIf
+
+		' If no bins were returned set sOrigin = "N/A", if one bin was returned set sOrigin = the returned bin, if multiple bins were returned set sOrigin = "Multiple"
+		F.Intrinsic.Control.If(V.Local.bEmpty,=,True)
+			V.Local.sOrigin.Set("N/A")
+		F.Intrinsic.Control.ElseIf(V.Local.bInstr,=,False)
+			V.Local.sOrigin.Set(V.Local.sRet)
+		F.Intrinsic.Control.Else
+			V.Local.sOrigin.Set("Multiple")
+		F.Intrinsic.Control.EndIf
+
+		' Build the string to find out if the request exists
+		F.Intrinsic.String.Build("Select status from GAB_4605_MATL_HNDL where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sMatl(v.Local.iFor),V.Local.sSel)
+
+		' Execute and return
+		F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+		' If the sequence doesn't exist write the record to GAB_4605_MATL_HNDL
+		F.Intrinsic.Control.If(V.Local.sRet,=,"")
+
+			' Build the string
+			F.Intrinsic.String.Build("Insert into GAB_4605_MATL_HNDL (Job, Suffix, Seq, Part, Description, Quantity, Origin, Destination, Req_By, Date_Req, Picked_By, Status,Type) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','M')",V.Global.sWO,V.Global.sWoSuffix,V.Local.sMatl(v.Local.iFor),V.Local.sPart,V.Local.sDesc,V.Local.sQty,V.Local.sOrigin,V.Global.sWC,V.Global.GuiUserName,V.Global.sSQLDate,"OPEN","OPEN",V.Local.sSQL)
+
+			' Insert the record
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iFor)
+F.Intrinsic.Control.EndIf
+
+Program.Sub.Request99xxxx.End
+
+Program.Sub.Matlreq_Click.Start
+Gui.f_MDisp..Visible(0)
+Gui.f_MDisp.tmrRefresh.Interval(0)
+Gui.f_MDisp..show
+Gui.f_matlreq..show
+Gui.f_matlreq.txt1.BackColor(V.Color.LtGray)
+Program.Sub.Matlreq_Click.End
+
+Program.Sub.f_MatlReq_Unload.Start
+Gui.f_matlreq..Visible(0)
+Gui.f_MDisp..Visible(0)
+Gui.f_MDisp.tmrRefresh.Interval(0)
+F.Intrinsic.Control.CallSub(dispatch)
+Gui.f_matlreq.txt1.BackColor(V.Color.LtGreen)
+'gui.f_matlreq.lbl1.Caption("Scan Labor Barcode")
+'Gui.f_matlreq.lbl1.ForeColor(V.Color.Black)
+'Gui.f_MDisp..show
+Program.Sub.f_MatlReq_Unload.End
+
+Program.Sub.Matlreq_Enter.Start
+'F.Intrinsic.Control.CallSub(Matlreq)
+F.Intrinsic.Control.CallSub(Matlreq2)
+gui.f_matlreq.txt1.Text("")
+'gui.f_matlreq.lbl1.Caption("Scan Labor Barcode")
+'Gui.f_matlreq.lbl1.ForeColor(V.Color.Black)
+Program.Sub.Matlreq_Enter.End
+
+Program.Sub.SetAnchors.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	'0 - None
+	'1 - Top
+	'2 - Bottom
+	'4 - Left
+	'8 - Right
+
+	Gui.f_MDisp2.picGSSLogo.Anchor(1)
+	gui.f_MDisp2.GSGCDispatch2.Anchor(15)
+	gui.f_MDisp2.cmdclose.Anchor(9)
+	gui.f_MDisp2.refresh.Anchor(9)
+	gui.f_MDisp2.cmdexport.Anchor(9)
+	gui.f_MDisp2.txt1.Anchor(9)
+	gui.f_MDisp2.txt2.Anchor(9)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.SetAnchors.End
+
+Program.Sub.Dispatch2.Start
+' This subroutine will call the material handling dispatch screen
+
+F.Intrinsic.Control.BlockEVents
+F.Intrinsic.Control.CallSub(loaddtdispatch2)
+F.Intrinsic.Control.UnBlockEVents
+'F.Intrinsic.Control.CallSub(Serialize)
+
+V.Local.iRows.Declare
+V.Local.sAmt.Declare
+V.Local.iFor.Declare
+V.Local.sOrigin.Declare
+v.Local.sstatus.Declare
+
+'Gui.f_MDisp2..Visible(0)
+Gui.f_MDisp2..show
+
+Program.Sub.Dispatch2.End
+
+Program.Sub.loadDTDispatch2.Start
+'F.ODBC.Connection!con.OpenLocalRecordsetRO("rstSel","Select status, (select case when suffix <> '###' then job+'-'+suffix else job end) as WO,seq,part,description,quantity,origin,destination,req_by,date_req,picked_by from GAB_4605_MATL_HNDL where Status <> 'DELIVERED' order by Status desc, date_req")
+'Gui.f_MDisp.gsfgDispatch.LoadRecordset("con!rstSel",2)
+
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSQL.Declare
+
+	'Create Data Table
+	F.Intrinsic.Control.If(V.DataTable.dtDispatch2.Exists)
+		F.data.datatable.close("dtDispatch2")
+	F.Intrinsic.Control.EndIf
+	
+	V.Global.bLoadData.Set(True)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	'Building the SQL Statement
+	V.Local.SSQL.Set("Select STATUS,PICKED_BY,JOB,SUFFIX,SEQ,PART,LOC,PART+COALESCE(Loc,'  ') AS PartLoc,QUANTITY,BIN_1,BIN_2,BIN_3,BIN_TO,SEQ_DUEDATE,ORIGIN,DESTINATION,REQ_BY,DATE_REQ,SEQ_LABOR from GAB_4807_MATL_HNDL where Status <> 'DELIVERED' order by Status desc, date_req;")
+	F.Data.DataTable.CreateFromSQL("dtDispatch2","con",V.Local.sSQL,True)
+	F.Data.DataTable.AddColumn("dtDispatch2","QTY_ONHAND",Float,0)
+	F.Data.DataTable.AddColumn("dtDispatch2","QTY_PO",Float,0)
+	F.Data.DataTable.AddColumn("dtDispatch2","Update",boolean,0)
+	
+	
+	'Add Qty On Hand from Inventory_Mstr
+	F.Data.Dictionary.CreateFromSQL("dQtyOH","con","Select Part+Location As PartLoc,Qty_OnHand From V_InVentory_Mstr Order By Part,Location;")
+	F.Data.Dictionary.SetDefaultReturn("dQtyOH",0)
+	F.Data.DataTable.FillFromDictionary("dtDispatch2","dQtyOH","PartLoc","QTY_ONHAND")
+	F.Data.Dictionary.Close("dQtyOH")
+
+	'Add Qty On PO from Inventory_Mstr
+	F.Data.Dictionary.CreateFromSQL("dQtyPO","con","Select Part+Location As PartLoc,Qty_OnOrder_PO From V_InVentory_Mstr Order By Part,Location;")
+	F.Data.Dictionary.SetDefaultReturn("dQtyPO",0)
+	F.Data.DataTable.FillFromDictionary("dtDispatch2","dQtyPO","PartLoc","QTY_PO")
+	F.Data.Dictionary.Close("dQtyPO")	
+	
+	'Add bin from Inventory_Mstr
+	F.Data.Dictionary.CreateFromSQL("dBin","con","Select Part+Location As PartLoc,BIN From V_InVentory_Mstr Order By Part,Location;")
+	F.Data.Dictionary.SetDefaultReturn("dBin",0)
+	F.Data.DataTable.FillFromDictionary("dtDispatch2","dBin","PartLoc","BIN_TO")
+	F.Data.Dictionary.Close("dBin")
+	
+	'Add bins from Item_Master
+'	F.Data.Dictionary.CreateFromSQL("dItem","con","Select distinct Part+Location As PartLoc,BIN From V_Item_Master where quantity >0 Order By Part,Location,Bin desc;")
+'	F.Data.Dictionary.SetDefaultReturn("dItem","")
+'	F.Data.DataTable.FillFromDictionary("dtDispatch2","dItem","PartLoc","BIN_1")	
+'	F.Data.Dictionary.Close("dItem")
+	
+	F.Intrinsic.Control.CallSub(loaddVgDispatch2)
+
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+	F.ODBC.Connection!con.Close
+Program.Sub.loadDTDispatch2.End
+
+Program.Sub.TableExists2.Start
+' This subroutine will check to see if GAB_4807_MATL_HNDL exists and will create it if it doesn't
+
+V.Local.bExists.Declare
+V.Local.sSQL.Declare
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!Con.TableExists("GAB_4807_MATL_HNDL",V.Local.bExists)
+
+' Create the table if it doesn't exist
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	' Build the create statement
+	V.Local.sSQL.Set("CREATE TABLE GAB_4807_MATL_HNDL(JOB CHAR(6),SUFFIX CHAR(3),SEQ CHAR(6),SEQ_LABOR CHAR(6),PART CHAR(20),LOC CHAR(2),QUANTITY NUMERIC(12,4),BIN_1 CHAR(6), BIN_2 CHAR(6),BIN_3 CHAR(6),BIN_TO CHAR(6),SEQ_DUEDATE DATE, ORIGIN CHAR(8),DESTINATION CHAR(8),REQ_BY CHAR(15),DATE_REQ DATETIME,PICKED_BY CHAR(15),DATE_PICKED DATETIME,DEL_BY CHAR(15),DATE_DEL DATETIME,STATUS CHAR(10),TYPE CHAR(1) )")
+	' Execute the create statement
+	F.ODBC.Connection!Con.Execute(V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!con.Close
+Program.Sub.TableExists2.End
+
+Program.Sub.loaddVgDispatch2.Start
+'V.Local.sSQL.Set("CREATE TABLE GAB_4807_MATL_HNDL(JOB CHAR(6) NOT NULL ,SUFFIX CHAR(3),SEQ CHAR(6) NOT NULL ,PART CHAR(20) NOT NULL ,LOC CHAR(2),QUANTITY NUMERIC(12,4) NOT NULL ,BIN_1 CHAR(6), BIN_2 CHAR(6),BIN_3 CHAR(6),BIN_TO CHAR(6),SEQ_DUEDATE DATE NOT NULL, ORIGIN CHAR(8) NOT NULL ,DESTINATION CHAR(8) NOT NULL ,REQ_BY CHAR(15) NOT NULL ,DATE_REQ DATETIME NOT NULL ,PICKED_BY CHAR(15),DATE_PICKED DATETIME,DEL_BY CHAR(15),DATE_DEL DATETIME,STATUS CHAR(10) NOT NULL,TYPE CHAR(1) NOT NULL )")
+	
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.iRet.Declare
+	V.Local.iCnt.Declare
+	V.Local.sCaption.Declare
+	V.Local.bHold.Declare
+
+	Gui.f_MDisp2.GSGCDispatch2.AddGridViewFromDataTable("gvDispatch2","dtDispatch2")
+	Gui.f_MDisp2.GSGCDispatch2.MainView("gvDispatch2")
+	Gui.f_MDisp2.GSGCDispatch2.Suspendlayout()
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","MultiSelect",True)
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","AllowSort",True)
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","AllowFilter",True)
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","OptionsDetailShowDetailTabs",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","OptionsViewShowGroupPanel",True)
+	Gui.f_MDisp2.GSGCDispatch2.SetGridViewProperty("gvDispatch2","OptionsMenuShowAutoFilterRowItem",False)
+
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PartLoc","Visible",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Origin","Visible",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Status","Visible",False)
+		Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Seq_Labor","Visible",False)
+
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","JOB","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SUFFIX","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PART","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","LOC","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QUANTITY","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_1","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_2","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_3","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_TO","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ_DUEDATE","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DESTINATION","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","REQ_BY","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DATE_REQ","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","STATUS","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ONHAND","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_PO","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Update","AllowEdit",False)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PICKED_BY","AllowEdit",False)
+	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","JOB","Caption","Job")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SUFFIX","Caption","Suffix")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ","Caption","Seq")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PART","Caption","Part Needed")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","LOC","Caption","Loc")	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QUANTITY","Caption","Qty Needed")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_1","Caption","Bin 1")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_2","Caption","Bin 2")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_3","Caption","Bin 3")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_TO","Caption","To Bin")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ_DUEDATE","Caption","Operation Due Date")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DESTINATION","Caption","Labor Op")	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","REQ_BY","Caption","Request by")	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DATE_REQ","Caption","Request Date/Time")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","STATUS","Caption","Status")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ONHAND","Caption","Qty On Hand")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_PO","Caption","Qty On PO")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Update","Caption","Update")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PICKED_BY","Caption","Status?")
+	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","JOB","MinWidth","60")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SUFFIX","MinWidth","35")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PART","MinWidth","125")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","LOC","MinWidth","35")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QUANTITY","MinWidth","80")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_1","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_2","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_3","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BIN_TO","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ_DUEDATE","MinWidth","120")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DESTINATION","MinWidth","60")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","REQ_BY","MinWidth","80")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","DATE_REQ","MinWidth","120")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","STATUS","MinWidth","80")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ONHAND","MinWidth","80")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_PO","MinWidth","80")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Update","MinWidth","50")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PICKED_BY","MinWidth","80")
+	
+
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Customer","Fixed","Left")
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Name_Customer","Fixed","Left")	
+
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Qty_BO","DisplayCustomNumeric","#,###,##0.00")
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PRICE","DisplayCustomNumeric","#,###,##0.00")
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","BO_EXTENSION","DisplayCustomNumeric","#,###,##0.00")
+'	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ORIGINAL","DisplayCustomNumeric","#,###,##0.00")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ONHAND","DisplayCustomNumeric","#,###,##0.00")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_PO","DisplayCustomNumeric","#,###,##0.00")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QUANTITY","DisplayCustomNumeric","#,###,##0.00")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","SEQ_DUEDATE","DisplayCustomDatetime","d")
+	
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtDispatch2.RowCount--,1)
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Update","CellBackColor","LightGray")
+		F.Intrinsic.Control.If(V.DataTable.dtDispatch2(V.Local.iCnt).STATUS!fieldVAltrim,=,"PICKING")
+			Gui.f_MDisp2.GSGCDispatch2.setRowAppearance("gvDispatch2",V.Local.iCnt,"BackColor","Green")
+			'Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","PICKED_BY","CellBackColor","Green")
+			Gui.f_MDisp2.GSGCDispatch2.SetCellValueByColumnName("gvDispatch2","Update",v.Local.iCnt,"True")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(V.DataTable.dtDispatch2(V.Local.iCnt).SUFFIX!fieldVAltrim,=,"###")			
+			Gui.f_MDisp2.GSGCDispatch2.SetCellValueByColumnName("gvDispatch2","SUFFIX",v.Local.iCnt,"")
+		F.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Part","cellforecolor","Blue")
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Job","cellforecolor","Blue")	
+	Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","QTY_ONHAND","cellforecolor","Blue")
+	
+	'set bins for available inventory in item_master
+		v.Local.spart.Declare
+		v.Local.sloc.Declare
+		v.Local.sbin1.Declare
+		v.Local.sbin2.Declare
+		v.Local.sbin3.Declare
+		v.Local.icount.Declare(long)
+		v.Local.ssel.Declare
+	f.Intrinsic.Control.For(v.Local.iCnt,0,V.DataTable.dtDispatch2.RowCount--,1)
+		v.Local.icount.Set(0)
+		Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","part",v.Local.iCnt,v.Local.spart)
+		f.Intrinsic.String.RTrim(v.Local.spart,v.Local.spart)
+		Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","loc",v.Local.iCnt,v.Local.sloc)
+		f.Intrinsic.String.RTrim(v.Local.sloc,v.Local.sloc)		
+
+
+		
+		F.Intrinsic.String.Build("select distinct Part+COALESCE(Location,'') As PartLoc,BIN From V_Item_Master where quantity >0 and part ='{0}' and location = '{1}' Order By Part,Location,Bin asc",V.Local.spart,V.Local.sloc,V.Local.sSel)		
+		F.ODBC.Connection!con.OpenRecordsetRO("rstitem",V.Local.sSel)
+		f.Intrinsic.Math.Add(v.Local.icount,1,v.Local.icount)
+		F.Intrinsic.Control.DoUntil(V.ODBC.con!rstitem.EOF,=,"True")
+		'F.Intrinsic.Control.DoUntil(v.Local.icount,=,3)				
+		f.Intrinsic.Control.If(v.Local.icount,=,1)
+		V.Local.sbin1.Set(V.ODBC.Con!rstitem.FieldValTrim!BIN)
+		Gui.f_MDisp2.GSGCDispatch2.SetCellValueByColumnName("gvDispatch2","Bin_1",v.Local.iCnt,v.Local.sbin1)
+		f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.If(v.Local.icount,=,2)
+		V.Local.sbin2.Set(V.ODBC.Con!rstitem.FieldValTrim!BIN)
+		Gui.f_MDisp2.GSGCDispatch2.SetCellValueByColumnName("gvDispatch2","Bin_2",v.Local.iCnt,v.Local.sbin2)
+		f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.If(v.Local.icount,=,3)
+		V.Local.sbin3.Set(V.ODBC.Con!rstitem.FieldValTrim!BIN)
+		Gui.f_MDisp2.GSGCDispatch2.SetCellValueByColumnName("gvDispatch2","Bin_3",v.Local.iCnt,v.Local.sbin3)
+		f.Intrinsic.Control.EndIf
+		f.Intrinsic.Math.Add(v.Local.icount,1,v.Local.icount)
+		F.ODBC.con!rstitem.MoveNext
+		F.Intrinsic.Control.Loop
+		F.ODBC.con!rstitem.Close
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	
+	Gui.f_MDisp2.GSGCDispatch2.ResumeLayout()
+		
+	F.Intrinsic.Control.CallSub(DeSerialize)
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.loaddVgDispatch2.End
+
+Program.Sub.f_MDisp2_Unload.Start
+F.Intrinsic.Control.CallSub(Serialize)
+Gui.f_MDisp2..Visible(0)
+F.Intrinsic.Control.End
+Program.Sub.f_MDisp2_Unload.End
+
+Program.Sub.MatlReq2.Start
+' This subroutine will write a material request to GAB_4807_MATL_HNDL when a GUI user highlights a line and clicks Script 1
+
+V.Local.sLMO.Declare
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sDate.Declare
+V.Local.sTime.Declare
+V.Local.sMonth.Declare
+V.Local.sDay.Declare
+V.Local.sYear.Declare
+V.Local.sHours.Declare
+V.Local.sMinutes.Declare
+V.Local.sSeconds.Declare
+
+' Convert V.Ambient.Now to SQL Datetime
+F.Intrinsic.String.DateString(V.Ambient.Now,V.Local.sDate)
+F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+F.Intrinsic.String.TimeStringsec(V.Ambient.Now,V.Local.sTime)
+F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.Global.sSQLDate)
+
+
+'called from custom menu GAB hook
+f.Intrinsic.Control.If(v.Caller.Hook,<,"1000000")
+	V.Local.sLMO.Set(V.Passed.009989)
+	V.Global.sWO.Set(V.Passed.009990)
+	V.Global.sWoSuffix.Set(V.Passed.009991)
+	V.Global.sWoSeq.Set(V.Passed.009992)
+	V.Global.sWC.Set(V.Passed.009996)
+f.Intrinsic.Control.else
+' scan string will be $%123456778901000
+	v.Local.sScantxt.Declare(String)
+	v.Local.sScantxt.Set(V.Screen.f_matlreq!txt1.Text)
+	f.Intrinsic.String.Mid(v.Local.sScantxt,3,15,v.Local.sScantxt)
+	f.Intrinsic.String.Left(v.Local.sScantxt,6,v.Global.sWO)
+	f.Intrinsic.String.Mid(v.Local.sScantxt,7,3,v.Global.sWoSuffix)
+	f.Intrinsic.String.Trim(v.Global.sWoSuffix,v.Global.sWoSuffix)
+	f.Intrinsic.String.Right(v.Local.sScantxt,6,v.Global.sWoSeq)
+	'add sWC
+	F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+	v.Global.sWC.Set(v.Local.sRet)
+	F.ODBC.Connection!con.Close
+f.Intrinsic.Control.endif
+
+F.Intrinsic.Control.If(V.Global.sWC,=,"ZIND")
+	F.Intrinsic.UI.Msgbox("Please select a Work Order Line first","On-line GUI Message")
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"")
+		V.Global.sWoSuffix.Set("###")
+	F.Intrinsic.Control.EndIf
+	' Check to see that it is a labor sequence
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select LMO from V_JOB_OPERATIONS where JOB = '{0}' and SEQ = '{1}'",V.Global.sWO,V.Global.sWoSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select LMO from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+
+
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"L")
+		F.Intrinsic.UI.Msgbox("Please select a labor sequence","On-line GUI Message")
+		'gui.f_matlreq.lbl1.Caption("Please select a labor sequence")
+		'Gui.f_matlreq.lbl1.ForeColor(V.Color.Red)
+		Gui.f_matlreq.txt1.BackColor(V.Color.LtRed)
+		F.ODBC.Connection!con.Close
+		'F.Intrinsic.Control.End
+
+'		Gui.f_MDisp..Visible(0)
+'		Gui.f_MDisp.tmrRefresh.Interval(0)
+'		Gui.f_MDisp..show
+		gui.f_matlreq.txt1.Text("")	
+						
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.CallSub(Requestwip2)
+		F.ODBC.Connection!con.Close
+		'F.Intrinsic.Control.CallSub(f_matlreq_unload)
+		'F.Intrinsic.Control.CallSub(Dispatch)
+		gui.f_matlreq.txt1.Text("")	
+		'gui.f_matlreq.lbl1.Caption("Scan Labor Barcode")
+		'Gui.f_matlreq.lbl1.ForeColor(V.Color.Black)
+		F.Intrinsic.Control.CallSub(Dispatch2)
+	F.Intrinsic.Control.EndIf	
+F.Intrinsic.Control.EndIf
+'F.Intrinsic.Control.CallSub(f_matlreq_unload)
+Program.Sub.MatlReq2.End
+
+Program.Sub.Matlreq2_Click.Start
+Gui.f_MDisp2..Visible(0)
+Gui.f_MDisp2..show
+Gui.f_matlreq..show
+Gui.f_matlreq.txt1.BackColor(V.Color.LtGray)
+Program.Sub.Matlreq2_Click.End
+
+Program.Sub.RequestWIP2.Start
+' This subroutine will write the line to GAB_4807_MATL_HNDL for the WIP request
+
+V.Local.sSel.Declare
+V.Local.sRet.Declare
+V.Local.sSQL.Declare
+V.Local.sOrigin.Declare
+V.Local.sQty.Declare
+V.Local.sMessage.Declare
+V.Local.sWoPrevSeq.Declare
+V.Local.sWCPrev.Declare
+V.Local.sWIPBin.Declare
+V.Local.sPart.Declare
+v.Local.sPartLoc.Declare
+V.Local.sDesc.Declare
+v.Local.sMatlseq.Declare
+v.Local.sMatlpart.Declare
+v.Local.sMatlQty.Declare
+v.Local.sMatlDueDate.Declare
+V.Local.sYear.Declare
+V.Local.sMonth.Declare
+V.Local.sDay.Declare
+v.Local.slen.Declare
+
+
+' Find the part number for the work order
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select Part,location from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Part,location from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+V.Local.sPart.Set(V.Local.sRet(0))
+V.Local.sPartLoc.Set(V.Local.sRet(1))
+
+' Find the previous labor sequence for the work order
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SEQ < '{1}' and LMO = 'L' order by SEQ desc",V.Global.sWO,V.Global.sWoSeq,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ < '{2}' and LMO = 'L' order by SEQ desc",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,=,"")
+	'V.Local.sWoPrevSeq.Set("NONE")
+	V.Local.sWoPrevSeq.Set("000000")
+	V.Local.sWCPrev.Set("N/A")
+F.Intrinsic.Control.Else
+	V.Local.sWoPrevSeq.Set(V.Local.sRet)
+	' Find the previous work center
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SEQ = '{1}' and LMO = 'L'",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select PART from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ = '{2}' and LMO = 'L'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sWCPrev)
+	F.Intrinsic.String.Trim(V.Local.sWCPrev,V.Local.sWCPrev)
+F.Intrinsic.Control.EndIf
+' Find the part description
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select Description from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Description from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+V.Local.sDesc.Set(V.Local.sRet)
+' Set sBin equal to sWIPBin, if multiple then set sBin to Multi, if blank then set sBin to WIP
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+	F.Intrinsic.String.Build("Select BIN from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}' and QTY_BIN > 0",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select BIN from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}' and QTY_BIN > 0",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sWIPBin)
+F.Intrinsic.String.Trim(V.Local.sWIPBin(0),V.Local.sWIPBin(0))
+F.Intrinsic.Control.If(V.Local.sWIPBin.UBound,>,0)
+	V.Local.sOrigin.Set("Multiple")
+F.Intrinsic.Control.ElseIf(V.Local.sWIPBin(0),=,"")
+	V.Local.sOrigin.Set(V.Local.sWCPrev)
+F.Intrinsic.Control.Else
+	V.Local.sOrigin.Set(V.Local.sWIPBin(0))
+F.Intrinsic.Control.EndIf
+' Fill the quantity with the WIP_BIN.QTY_BIN sum or the work order quantity if no WIP in Bins
+F.Intrinsic.Control.SelectCase(V.Local.sWIPBin(0))
+F.Intrinsic.Control.Case("")
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select QTY_ORDER from V_JOB_HEADER where JOB = '{0}'",V.Global.sWO,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select QTY_ORDER from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.CaseElse
+	F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		F.Intrinsic.String.Build("Select sum(QTY_BIN) as Qty from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}'",V.Global.sWO,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select sum(QTY_BIN) as Qty from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Local.sWoPrevSeq,V.Local.sSel)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndSelect
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+V.Local.sQty.Set(V.Local.sRet)
+
+
+
+' Write the line to GAB_4807_MATL_HNDL if it doesn't already exist
+
+F.Intrinsic.String.Build("Select top 1 status from GAB_4807_MATL_HNDL where JOB = '{0}' and SUFFIX = '{1}' and SEQ_LABOR = '{2}'",V.Global.sWO,V.Global.sWoSuffix,V.Global.sWoSeq,V.Local.sSel)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,=,"")
+
+'Skip material parts where inventory_mstr.code_rm_shape = 'K'
+F.Intrinsic.Control.If(V.Global.sWoSuffix,=,"###")
+		'F.Intrinsic.String.Build("Select seq,part,hours_estimated,date_due from V_JOB_OPERATIONS where JOB = '{0}' and LMO = 'M' and seq < '{1}' and seq > '{2}' order by seq",V.Global.sWO,v.global.swoseq,V.Local.sWoPrevSeq,V.Local.sSel)
+		F.Intrinsic.String.Build("Select seq,V_JOB_OPERATIONS.part,hours_estimated,date_due from V_JOB_OPERATIONS left outer join V_INVENTORY_MSTR ON V_JOB_OPERATIONS.PART=V_INVENTORY_MSTR.PART where JOB = '{0}' and LMO = 'M' and seq < '{1}' and seq > '{2}' AND V_INVENTORY_MSTR.LOCATION='{3}' AND V_INVENTORY_MSTR.CODE_RM_SHAPE <> 'K' order by seq",V.Global.sWO,v.global.swoseq,V.Local.sWoPrevSeq,v.Local.sPartLoc,V.Local.sSel)
+	F.Intrinsic.Control.Else
+		'F.Intrinsic.String.Build("Select seq,part,hours_estimated,date_due from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and LMO = 'M' and seq < '{2}' and seq > '{3}' order by seq",V.Global.sWO,V.Global.sWoSuffix,v.global.swoseq,V.Local.sWoPrevSeq,V.Local.sSel)
+		 F.Intrinsic.String.Build("Select seq,V_JOB_OPERATIONS.part,hours_estimated,date_due from V_JOB_OPERATIONS left outer join V_INVENTORY_MSTR ON V_JOB_OPERATIONS.PART=V_INVENTORY_MSTR.PART where JOB = '{0}' and SUFFIX = '{1}' and LMO = 'M' and seq < '{2}' and seq > '{3}' AND V_INVENTORY_MSTR.LOCATION='{4}' AND V_INVENTORY_MSTR.CODE_RM_SHAPE <> 'K' order by seq",V.Global.sWO,V.Global.sWoSuffix,v.global.swoseq,V.Local.sWoPrevSeq,v.Local.sPartLoc,V.Local.sSel)
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.OpenRecordsetRO("rstmatlseq",V.Local.sSel)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rstmatlseq.EOF,=,"True")
+	v.Local.sMatlseq.Set(v.ODBC.con!rstmatlseq.FieldValTrim!seq)
+	v.Local.sMatlpart.Set(v.ODBC.con!rstmatlseq.FieldValTrim!part)
+	v.Local.sMatlqty.Set(v.ODBC.con!rstmatlseq.FieldValTrim!hours_estimated)
+	v.Local.sMatlduedate.Set(v.ODBC.con!rstmatlseq.FieldValTrim!date_due)
+		F.Intrinsic.String.split(v.Local.sMatlDueDate,"/",v.Local.sMatlDueDate)
+		V.Local.sMonth.Set(v.Local.sMatlDueDate(0))
+		V.Local.sDay.Set(v.Local.sMatlDueDate(1))
+		V.Local.sYear.Set(v.Local.sMatlDueDate(2))
+		f.Intrinsic.String.Len(v.Local.sYear,v.Local.slen)	
+		f.Intrinsic.Control.If(v.Local.slen,=,2)
+		f.Intrinsic.String.Concat("20",v.Local.sYear,v.Local.sYear)
+		f.Intrinsic.Control.EndIf
+		F.Intrinsic.String.Build("{0}-{1}-{2}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.local.sMatlDueDate)
+
+
+	F.Intrinsic.String.Build("Insert into GAB_4807_MATL_HNDL (Job, Suffix, Seq, Seq_Labor,Part, loc, Quantity, Origin, Destination, Seq_duedate, Req_By, Date_Req, Picked_By, Status,Type) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','W')",V.Global.sWO,V.Global.sWoSuffix,V.Local.sMatlseq,v.Global.sWOSeq,V.Local.sMatlpart,v.Local.sPartLoc,V.Local.sMatlQty,V.Local.sOrigin,V.Global.sWC,v.Local.sMatlDueDate,V.Global.GuiUserName,V.Global.sSQLDate,"OPEN","OPEN",V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)	
+		
+	F.ODBC.con!rstmatlseq.MoveNext
+	F.Intrinsic.Control.Loop
+	F.ODBC.con!rstmatlseq.Close
+	f.Intrinsic.Control.If(v.Caller.Hook,<,"1000000")
+		F.Intrinsic.UI.Msgbox("Request sent successfully","On-line GUI Message")
+	f.Intrinsic.Control.Else
+		Gui.f_matlreq.txt1.BackColor(V.Color.LtGreen)
+	f.Intrinsic.Control.EndIf	
+
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Request already exists and the status is {0}",V.Local.sRet,V.Local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.Local.sMessage,"On-line GUI Message")
+	Gui.f_matlreq.txt1.BackColor(V.Color.LtRed)
+F.Intrinsic.Control.EndIf	
+	
+
+Program.Sub.RequestWIP2.End
+
+Program.Sub.f_MatlReq_Unload2.Start
+Gui.f_matlreq..Visible(0)
+F.Intrinsic.Control.CallSub(Dispatch2)
+Program.Sub.f_MatlReq_Unload2.End
+
+Program.Sub.f_MDisp2_RowCellClick.Start
+' This subroutine will update the line to Picked or Closed
+
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sStatus.Declare
+	V.Local.sWO.Declare
+	V.Local.sSuffix.Declare
+	V.Local.sSeq.Declare
+	V.Local.sPart.Declare
+	v.Local.sSeq_Labor.Declare
+
+	V.Local.sName.Declare
+	V.Local.iDash.Declare
+	V.Local.sSQL.Declare
+	V.Local.sSel.Declare
+	V.Local.sRet.Declare
+	V.Local.sWoPrevSeq.Declare
+	V.Local.sReqDateTime.Declare
+	V.Local.sDate.Declare
+	V.Local.sTime.Declare
+	V.Local.sMonth.Declare
+	V.Local.sDay.Declare
+	V.Local.sYear.Declare
+	V.Local.sHours.Declare
+	V.Local.sMinutes.Declare
+	V.Local.sSeconds.Declare
+	V.Local.sSQLDate.Declare
+	V.Local.sNowDate.Declare
+		
+	V.Local.sLoc.Declare
+	V.Local.sParams.Declare
+
+
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Status",V.Args.RowIndex,V.Local.sStatus)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Job",V.Args.RowIndex,V.Global.sJob)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Suffix",V.Args.RowIndex,V.Global.sSuffix)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Seq",V.Args.RowIndex,V.Global.sSeq)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Date_Req",V.Args.RowIndex,V.Local.sReqDateTime)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Part",V.Args.RowIndex,V.Local.sPart)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Loc",V.Args.RowIndex,V.Local.sLoc)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Picked_By",V.Args.RowIndex,V.Local.sName)
+	Gui.f_MDisp2.GSGCDispatch2.GetCellValueByColumnName("gvDispatch2","Seq_Labor",V.Args.RowIndex,V.Local.sSeq_Labor)
+
+F.Intrinsic.Control.SelectCase(V.Args.Column)
+F.Intrinsic.Control.Case("PART")			
+	F.Intrinsic.String.ConcatCallWrapperArgs(V.Local.sPart,V.Local.sLoc,"O",V.Local.sParams)			
+	F.Global.General.CallWrappersync(300011,V.Local.sParams)
+	
+F.Intrinsic.Control.Case("JOB")	
+		'Build Call Wrapper String
+		F.Intrinsic.String.Concat("7","!*!",V.Global.sJob,"!*!",V.Global.sSuffix,"!*!","A",V.Local.sParams)
+		F.Global.General.CallWrapperSync(450000,V.Local.sParams)
+
+'Reprint picklist report
+F.Intrinsic.Control.Case("QTY_ONHAND")	
+		f.Intrinsic.Control.CallSub(MatlPick_Click2)
+		
+F.Intrinsic.Control.Case("Update")
+	'print picklist if status is OPEN
+	f.Intrinsic.Control.If(v.Local.sStatus.Trim,=,"OPEN")
+		f.Intrinsic.Control.CallSub(MatlPick_Click2)
+	f.Intrinsic.Control.EndIf
+
+	f.Intrinsic.Control.If(V.Global.sSuffix,=,"")
+		V.Global.sSuffix.Set(###)
+	f.Intrinsic.Control.EndIf
+		' Convert Flexgrid Datetime to SQL Datetime
+	F.Intrinsic.String.DateString(V.Local.sReqDateTime,V.Local.sDate)
+	F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+	F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+	F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+	F.Intrinsic.String.TimeStringsec(V.Local.sReqDateTime,V.Local.sTime)
+	F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+	F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+	F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+	F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.local.sSQLDate)
+	
+					
+	F.Intrinsic.String.Build("Select Status from GAB_4807_MATL_HNDL where Job = '{0}' and Suffix = '{1}' and Seq = '{2}' and Part = '{3}' and Date_Req = '{4}'",V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSel)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+	F.ODBC.Connection!con.Close
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sStatus)
+	F.Intrinsic.String.Trim(V.Local.sStatus(0),V.Local.sStatus(0))
+	
+	' Convert V.Ambient.Now to SQL Datetime
+	F.Intrinsic.String.DateString(V.Ambient.Now,V.Local.sDate)
+	F.Intrinsic.String.Left(V.Local.sDate,4,V.Local.sYear)
+	F.Intrinsic.String.Mid(V.Local.sDate,5,2,V.Local.sMonth)
+	F.Intrinsic.String.Right(V.Local.sDate,2,V.Local.sDay)
+	F.Intrinsic.String.TimeStringsec(V.Ambient.Now,V.Local.sTime)
+	F.Intrinsic.String.Left(V.Local.sTime,2,V.Local.sHours)
+	F.Intrinsic.String.Mid(V.Local.sTime,3,2,V.Local.sMinutes)
+	F.Intrinsic.String.Right(V.Local.sTime,2,V.Local.sSeconds)
+	F.Intrinsic.String.Build("{0}-{1}-{2} {3}:{4}:{5}",V.Local.sYear,V.Local.sMonth,V.Local.sDay,V.Local.sHours,V.Local.sMinutes,V.Local.sSeconds,V.Local.sNowDate)
+	
+	
+	F.Intrinsic.Control.If(v.Local.sName.Trim,<>,v.Global.GuiUserName.Trim,and,v.Local.sStatus(0),=,"PICKING")
+		F.Intrinsic.UI.Msgbox("Material is being picked by another employee","On-Line GUI Message")
+	F.Intrinsic.Control.Else	
+		F.Intrinsic.Control.SelectCase(V.Local.sStatus(0))
+			F.Intrinsic.Control.Case("OPEN")
+				F.Intrinsic.String.Build("update GAB_4807_MATL_HNDL set status = 'PICKING', Date_Picked = '{0}', Picked_By = '{1}' where Job = '{2}' and Suffix = '{3}' and Seq = '{4}' and Part = '{5}' and Date_Req = '{6}'",V.Local.sNowDate,V.Global.GuiUserName,V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSQL)
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				F.ODBC.Connection!con.Close
+				'Gui.f_MDisp2.GSGCDispatch2.SetColumnProperty("gvDispatch2","Update","CellBackColor","LightGreen")
+			F.Intrinsic.Control.Case("PICKING")
+				F.Intrinsic.String.Build("update GAB_4807_MATL_HNDL set status = 'DELIVERED', Date_Del = '{0}', Del_By = '{1}' where Job = '{2}' and Suffix = '{3}' and Seq = '{4}' and Part = '{5}' and Date_Req = '{6}'",V.Local.sNowDate,V.Global.GuiUserName,V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Local.sPart,V.local.sSQLDate,V.Local.sSQL)
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				F.ODBC.Connection!con.Close
+				' Find the previous labor sequence for the work order
+				F.Intrinsic.Control.If(V.Global.sSuffix,=,"###")
+					F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SEQ < '{1}' and LMO = 'L' order by SEQ desc",V.Global.sJob,V.Global.sSeq,V.Local.sSel)
+				F.Intrinsic.Control.Else
+					F.Intrinsic.String.Build("Select top 1 SEQ from V_JOB_OPERATIONS where JOB = '{0}' and SUFFIX = '{1}' and SEQ < '{2}' and LMO = 'L' order by SEQ desc",V.Global.sJob,V.Global.sSuffix,V.Global.sSeq,V.Local.sSel)
+				F.Intrinsic.Control.EndIf
+				F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+				F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSel,V.Local.sRet)
+				F.ODBC.Connection!con.Close
+				' Remove any WIP in Bins for this Work Order and Previous sequence
+				F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+					V.Local.sWoPrevSeq.Set(V.Local.sRet)
+					F.Intrinsic.Control.If(V.Global.sSuffix,=,"###")
+						'F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}'",V.Global.sJob,V.Local.sWoPrevSeq,V.Local.sSQL)
+						F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SEQUENCE = '{1}'",V.Global.sJob,V.Local.sSeq_Labor,V.Local.sSQL)
+					F.Intrinsic.Control.Else
+						'F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.Global.sJob,V.Global.sSuffix,V.Local.sWoPrevSeq,V.Local.sSQL)
+						F.Intrinsic.String.Build("Delete from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.Global.sJob,V.Global.sSuffix,V.Local.sSeq_Labor,V.Local.sSQL)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUSER,V.Ambient.PPASS)
+					F.ODBC.Connection!con.Execute(V.Local.sSQL)
+					F.ODBC.Connection!con.Close
+				F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndSelect
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.CallSub(Dispatch2)
+
+F.Intrinsic.Control.EndSelect
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+	
+
+Program.Sub.f_MDisp2_RowCellClick.End
+
+Program.Sub.cmd_Export_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sFileExport.Declare
+	V.Local.bExcel.Declare
+	V.Local.bFileLocked.Declare
+	V.Local.sMsg.Declare
+
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+
+			
+			F.Intrinsic.Control.If(V.Local.bExcel)
+				F.Intrinsic.String.Build("{0}\GAB_4807_MATL_Handling_Export.xlsx",V.Caller.LocalGssTempDir,V.Local.sFileExport)
+				F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+				F.Intrinsic.Control.If(V.Local.bFileLocked)
+					F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+					F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+				F.Intrinsic.Control.Else
+					Gui.f_MDisp2.GsGCDispatch2.Export(V.Local.sFileExport,"xlsx")
+					F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("{0}\GAB_4807_MATL_Handling_Export.csV",V.Caller.LocalGssTempDir,V.Local.sFileExport)
+				F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+				F.Intrinsic.Control.If(V.Local.bFileLocked)
+					F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+					F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+				F.Intrinsic.Control.Else
+					Gui.f_MDisp2.GsGCDispatch2.Export(V.Local.sFileExport,"csV")
+				F.Intrinsic.Control.EndIf
+				F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+			F.Intrinsic.Control.EndIf
+
+		
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.cmd_Export_Click.End
+
+Program.Sub.Serialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	'
+	Gui.f_MDisp2.GSGCDispatch2.Serialize("gvDispatch2",V.Local.sSerialize)
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvDispatch2",4807,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+	
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.DeSerialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	'Delete old registry records
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvDispatch2",4807,0,5,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+		F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+		F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 4807 And Seq < 1000;")
+		F.ODBC.Connection!common.Close
+	F.Intrinsic.Control.EndIf
+
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvDispatch2",4807,1000,6,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+		Gui.f_MDisp2.GSGCDispatch2.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.DeSerialize.End
+
+Program.Sub.Refresh.Start
+F.Intrinsic.Control.CallSub(serialize)
+F.Intrinsic.Control.CallSub(Dispatch2)	
+Program.Sub.Refresh.End
+
+Program.Sub.MatlPick_Click2.Start
+' This subroutine will print the material pick ticket
+V.Local.sParams.Declare
+V.Local.sValues.Declare
+V.Local.iRptId.Declare
+V.Local.srptLoc.Declare
+V.Local.sbfseq.Declare(String)
+v.Local.ssel.Declare(String)
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.String.Concat("select Seq from V_JOB_OPERATIONS where JOB='",V.Global.sjob,"' and SUFFIX='",V.Global.ssuffix,"' and LMO = 'M' and SEQ='",V.Global.sseq,"' order by SEQ desc",V.Local.sSel)
+F.ODBC.Connection!con.OpenRecordsetRO("rstSel",V.Local.sSel)
+	F.Intrinsic.Control.If(V.ODBC.con!rstSel.EOF,=,false)
+		V.Local.sbfseq.Set(V.ODBC.con!rstSel.FieldValTrim!Seq)
+	F.Intrinsic.Control.EndIf
+F.ODBC.con!rstSel.Close
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.If(V.Global.sJob,<>,"")
+	F.Intrinsic.String.Concat(V.Global.sjob,"*!*",V.Global.ssuffix,"*!*",V.Global.sseq,"*!*",V.Local.sbfseq,V.Local.sValues)
+	F.Intrinsic.String.Split("Job*!*Suffix*!*Seq*!*BFSeq","*!*",V.Local.sParams)
+	F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+	F.Intrinsic.String.Concat(V.Caller.BusintDir,"\Custom\GAB_4807_Pick_ticket_dispatch2.rpt",V.Local.srptLoc)
+	F.Global.BI.InitializeReport("Pick_ticket_dispatch2",V.Local.srptLoc,V.Local.iRptId)
+	F.Global.BI.PrintReport(V.Local.iRptId,3,V.Local.sParams,V.Local.sValues,"",True)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please Select a Sequence First","On-line GUI Message")
+F.Intrinsic.Control.EndIf
+Program.Sub.MatlPick_Click2.End
+
+Program.Sub.Comments.Start
+${$0$}$GAB_MATL_Handling.$}$SUPERVSR$}$12/29/15$}$False
+Program.Sub.Comments.End
